@@ -1,0 +1,261 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Updated to darker black/purple galaxy theme colors */
+  --background: #000000; /* Pure black background */
+  --foreground: #e0d0ff; /* Light purple-tinted white for text */
+  --card: #0d0a1a; /* Very dark purple for cards */
+  --card-foreground: #d0c0f0; /* Light purple for card text */
+  --popover: #0d0a1a; /* Dark purple for popovers */
+  --popover-foreground: #d0c0f0; /* Light purple for popover text */
+  --primary: #7c3aed; /* Purple-600 for primary actions */
+  --primary-foreground: #ffffff; /* White text on primary */
+  --secondary: #a855f7; /* Purple-500 for secondary actions */
+  --secondary-foreground: #ffffff; /* White text on secondary */
+  --muted: #1a0d2e; /* Dark purple for muted elements */
+  --muted-foreground: #9ca3af; /* Gray for muted text */
+  --accent: #a855f7; /* Purple for accents */
+  --accent-foreground: #ffffff; /* White text for accents */
+  --destructive: #ef4444; /* Red for destructive actions */
+  --destructive-foreground: #ffffff; /* White text on destructive */
+  --border: #2d1b4e; /* Dark purple for borders */
+  --input: #0d0a1a; /* Very dark purple for inputs */
+  --ring: rgba(168, 85, 247, 0.5); /* Purple ring for focus */
+  --chart-1: #7c3aed;
+  --chart-2: #a855f7;
+  --chart-3: #c084fc;
+  --chart-4: #ddd6fe;
+  --chart-5: #ef4444;
+  --radius: 0.75rem; /* Slightly more rounded for cosmic feel */
+  --sidebar: #0d0a1a;
+  --sidebar-foreground: #e0d0ff;
+  --sidebar-primary: #7c3aed;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #a855f7;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #2d1b4e;
+  --sidebar-ring: rgba(168, 85, 247, 0.5);
+}
+
+.dark {
+  /* Dark mode optimized for black/purple galaxy theme */
+  --background: #000000; /* Pure black */
+  --foreground: #f3f0ff; /* Very light purple-tinted white */
+  --card: #0a0612; /* Even darker purple for cards */
+  --card-foreground: #e0d0ff; /* Light purple text */
+  --popover: #0a0612;
+  --popover-foreground: #e0d0ff;
+  --primary: #8b5cf6; /* Brighter purple for dark mode */
+  --primary-foreground: #ffffff;
+  --secondary: #7c3aed; /* Darker purple */
+  --secondary-foreground: #ffffff;
+  --muted: #1a0d2e;
+  --muted-foreground: #6b7280;
+  --accent: #a855f7;
+  --accent-foreground: #ffffff;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --border: #2d1b4e;
+  --input: #0d0a1a;
+  --ring: rgba(168, 85, 247, 0.6);
+  --chart-1: #8b5cf6;
+  --chart-2: #a855f7;
+  --chart-3: #c084fc;
+  --chart-4: #ddd6fe;
+  --chart-5: #ef4444;
+  --sidebar: #0a0612;
+  --sidebar-foreground: #f3f0ff;
+  --sidebar-primary: #8b5cf6;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #7c3aed;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #2d1b4e;
+  --sidebar-ring: rgba(168, 85, 247, 0.6);
+}
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Added galaxy-specific animations and effects */
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes glow {
+  0%,
+  100% {
+    box-shadow: 0 0 5px rgba(16, 185, 129, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.6), 0 0 30px rgba(16, 185, 129, 0.4);
+  }
+}
+
+@keyframes slideInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.twinkle {
+  animation: twinkle 2s ease-in-out infinite;
+}
+
+.float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+.slide-in {
+  animation: slideInFromBottom 0.6s ease-out;
+}
+
+.fade-in-scale {
+  animation: fadeInScale 0.4s ease-out;
+}
+
+/* Updated galaxy background with animated stars */
+.galaxy-bg {
+  background: radial-gradient(ellipse at center, #1a0d2e 0%, #0d0a1a 70%, #000000 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.galaxy-bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(2px 2px at 20px 30px, #b47eff, transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(180, 126, 255, 0.8), transparent),
+    radial-gradient(1px 1px at 90px 40px, #a855f7, transparent),
+    radial-gradient(1px 1px at 130px 80px, rgba(168, 85, 247, 0.6), transparent),
+    radial-gradient(2px 2px at 160px 30px, #c084fc, transparent);
+  background-repeat: repeat;
+  background-size: 200px 100px;
+  animation: twinkle 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Updated cosmic card styling for darker theme */
+.cosmic-card {
+  background: rgba(10, 6, 18, 0.9);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(45, 27, 78, 0.4);
+  transition: all 0.3s ease;
+}
+
+.cosmic-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(168, 85, 247, 0.3);
+  border-color: rgba(168, 85, 247, 0.6);
+}
+
+/* Updated glowing button effects with purple theme */
+.cosmic-button {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.cosmic-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+.cosmic-button:hover::before {
+  left: 100%;
+}
